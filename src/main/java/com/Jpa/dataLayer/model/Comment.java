@@ -14,16 +14,17 @@ public class Comment {
     @Column (name = "contenu")
     private String content;
 
-    @Column (name = "produit_id")
-    private String productId;
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "produit_id")
+    private Product product;
 
     public Comment() {
     }
 
-    public Comment(int commentId, String content, String productId) {
+    public Comment(int commentId, String content, Product product) {
         this.commentId = commentId;
         this.content = content;
-        this.productId = productId;
+        this.product = product;
     }
 
     public int getCommentId() {
@@ -42,11 +43,11 @@ public class Comment {
         this.content = content;
     }
 
-    public String getProductId() {
-        return productId;
+    public Product getProduct() {
+        return product;
     }
 
-    public void setProductId(String productId) {
-        this.productId = productId;
+    public void setProduct(Product product) {
+        this.product = product;
     }
 }

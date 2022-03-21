@@ -47,11 +47,12 @@ public class DataLayerApplication implements CommandLineRunner {
 		Product product01 = product1.get();
 		System.out.println("Product with ID 01 : " + product01.getName());
 		product01.getComments().forEach(comment -> System.out.println("All the comments for product ID 01 : " + comment.getContent()));
+		product01.getCategories().forEach(category -> System.out.println("All the categories for this product : " + category.getName()));
 
-		Optional<Category>category2 = this.categoryService.getCategoryById(2);
+		Optional<Category>category2 = this.categoryService.getCategoryById(3);
 		Category category02 = category2.get();
 		System.out.println("category ID 2 : " + category02.getName());
-		category02.getProducts().forEach(product -> System.out.println("Products associated with Category ID 02 : " + product.getName()));
+		category02.getProducts().forEach(product -> System.out.println("Products associated with Category ID 03 : " + product.getName()));
 
 		Optional<Comment>comment3 = this.commentService.getCommentById(3);
 		Comment comment03 = comment3.get();
