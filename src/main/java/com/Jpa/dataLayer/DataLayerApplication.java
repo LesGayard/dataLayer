@@ -34,6 +34,7 @@ public class DataLayerApplication implements CommandLineRunner {
 	@Transactional
 	public void run(String... args) throws Exception {
 
+		/* FINDALL */
 		Iterable<Product> products = this.productService.getProducts();
 		products.forEach(product -> System.out.println("List of all products : " + product.getName()));
 
@@ -43,6 +44,7 @@ public class DataLayerApplication implements CommandLineRunner {
 		Iterable<Comment> comments = this.commentService.getComments();
 		comments.forEach(comment -> System.out.println("List of all comments : " + comment.getContent()));
 
+		/* FIND BY ID */
 		Optional<Product>product1 = this.productService.getProductById(1);
 		Product product01 = product1.get();
 		System.out.println("Product with ID 01 : " + product01.getName());
@@ -57,6 +59,23 @@ public class DataLayerApplication implements CommandLineRunner {
 		Optional<Comment>comment3 = this.commentService.getCommentById(3);
 		Comment comment03 = comment3.get();
 		System.out.println("Comment with ID 3 : " + comment03.getContent());
+
+		/* SAVE  */
+		Category category = new Category();
+		category.setName("Promotion");
+		this.categoryService.addCategory(category);
+		this.categoryService.getCategories().forEach(category1 -> System.out.println("all categories : " + category1.getName()));
+
+		Product product = new Product();
+		product.setName("AssurancePromotion");
+		product.setDescription("un special nouveau package en promotion ! ");
+		product.setCost(800);
+		Comment comment = new Comment();
+		comment.setContent("une promotion interessante");
+		comment.setProduct(product);
+		product.addComment(comment);
+		this.productService.addProduct(product);
+		this.productService.getProducts().forEach(product2 -> System.out.println("All products : " + product2.getName()));
 
 
 	}
