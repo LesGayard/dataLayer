@@ -5,6 +5,8 @@ import com.Jpa.dataLayer.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 public class ProductService {
 
@@ -13,5 +15,9 @@ public class ProductService {
 
     public Iterable<Product> getProducts(){
         return this.productRepository.findAll();
+    }
+
+    public Optional<Product>getProductById(Integer id){
+        return this.productRepository.findById(id);
     }
 }

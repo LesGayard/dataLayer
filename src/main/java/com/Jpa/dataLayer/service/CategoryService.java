@@ -5,6 +5,8 @@ import com.Jpa.dataLayer.repository.CategoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 public class CategoryService {
 
@@ -13,5 +15,10 @@ public class CategoryService {
 
     public Iterable<Category> getCategories(){
         return this.categoryRepository.findAll();
+
+    }
+
+    public Optional<Category> getCategoryById(Integer id){
+        return this.categoryRepository.findById(id);
     }
 }

@@ -11,6 +11,8 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import java.util.Optional;
+
 @SpringBootApplication
 public class DataLayerApplication implements CommandLineRunner {
 
@@ -39,7 +41,17 @@ public class DataLayerApplication implements CommandLineRunner {
 		Iterable<Comment> comments = this.commentService.getComments();
 		comments.forEach(comment -> System.out.println("List of all comments : " + comment.getContent()));
 
+		Optional<Product>product1 = this.productService.getProductById(1);
+		Product product01 = product1.get();
+		System.out.println("Product with ID 01 : " + product01.getName());
 
+		Optional<Category>category2 = this.categoryService.getCategoryById(2);
+		Category category02 = category2.get();
+		System.out.println("category ID 2 : " + category02.getName());
+
+		Optional<Comment>comment3 = this.commentService.getCommentById(3);
+		Comment comment03 = comment3.get();
+		System.out.println("Comment with ID 3 : " + comment03.getContent());
 
 
 	}
