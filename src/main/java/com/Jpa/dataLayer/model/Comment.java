@@ -8,12 +8,13 @@ public class Comment {
 
     @Id
     @GeneratedValue( strategy = GenerationType.IDENTITY)
+    @Column (name = "commentaire_id")
     private int commentId;
 
     @Column (name = "contenu")
     private String content;
 
-    @Column (name = "produit")
+    @Column (name = "produit_id")
     private String productId;
 
     public Comment() {
